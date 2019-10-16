@@ -1,4 +1,10 @@
 import express, { Application } from "express";
+import morgan from 'morgan';
+import cors from 'cors';
+
+import indexRoutes from "./routes/indexRoutes";
+import gamesRoutes from "./routes/gamesRoutes";
+
 
 class Server {
 
@@ -11,11 +17,15 @@ class Server {
     }
 
     config(): void {
-        this.app.set('port', process.env.PORT || 3000)
+        this.app.set('port', process.env.PORT || 3000);
+        this.app.use(morgan("dev"));
+        this.app.use(cors());
     };
 
-    routes():void {
-        
+    routes(): void {
+        this.app.use(indexRoutes);
+        this.app.use('/api/games',gamesRoutes);
+
     }
 
     start(): void {
