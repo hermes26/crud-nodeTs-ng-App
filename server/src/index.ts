@@ -25,7 +25,8 @@ class Server {
     routes(): void {
         this.app.use(indexRoutes);
         this.app.use('/api/games',gamesRoutes);
-
+        this.app.use(express.json());
+        this.app.use(express.urlencoded({extended: false}));
     }
 
     start(): void {

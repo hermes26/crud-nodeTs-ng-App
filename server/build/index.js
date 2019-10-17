@@ -23,6 +23,8 @@ var Server = /** @class */ (function () {
     Server.prototype.routes = function () {
         this.app.use(indexRoutes_1.default);
         this.app.use('/api/games', gamesRoutes_1.default);
+        this.app.use(express_1.default.json());
+        this.app.use(express_1.default.urlencoded({ extended: false }));
     };
     Server.prototype.start = function () {
         var _this = this;
