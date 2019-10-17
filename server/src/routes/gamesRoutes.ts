@@ -1,5 +1,7 @@
 import { Router } from "express";
 
+import  gamesController  from "../controllers/gamesController";
+
 class GamesRoutes{
     public router: Router = Router();
 
@@ -8,9 +10,7 @@ class GamesRoutes{
     }
 
     config(): void {
-        this.router.get('/', (req, res) => { //el punto incial ('/') es '/api/games'
-            res.send('Games');
-        })
+        this.router.get('/', gamesController.index) //el punto incial ('/') es '/api/games'
     }
 }
 
