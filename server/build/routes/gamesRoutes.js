@@ -11,7 +11,12 @@ var GamesRoutes = /** @class */ (function () {
         this.config();
     }
     GamesRoutes.prototype.config = function () {
-        this.router.get('/', gamesController_1.default.index); //el punto incial ('/') es '/api/games'
+        //el punto incial ('/') es '/api/games'
+        this.router.get('/', gamesController_1.default.list);
+        this.router.get('/:id', gamesController_1.default.getOne);
+        this.router.post('/', gamesController_1.default.create);
+        this.router.put('/:id', gamesController_1.default.update);
+        this.router.delete('/:id', gamesController_1.default.delete);
     };
     return GamesRoutes;
 }());

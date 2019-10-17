@@ -20,13 +20,14 @@ class Server {
         this.app.set('port', process.env.PORT || 3000);
         this.app.use(morgan("dev"));
         this.app.use(cors());
+        this.app.use(express.json());
+        this.app.use(express.urlencoded({extended: false}));
     };
 
     routes(): void {
         this.app.use(indexRoutes);
         this.app.use('/api/games',gamesRoutes);
-        this.app.use(express.json());
-        this.app.use(express.urlencoded({extended: false}));
+        
     }
 
     start(): void {

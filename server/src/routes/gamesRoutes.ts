@@ -10,7 +10,12 @@ class GamesRoutes{
     }
 
     config(): void {
-        this.router.get('/', gamesController.index) //el punto incial ('/') es '/api/games'
+        //el punto incial ('/') es '/api/games'
+        this.router.get('/', gamesController.list); 
+        this.router.get('/:id', gamesController.getOne); 
+        this.router.post('/', gamesController.create);
+        this.router.put('/:id', gamesController.update);
+        this.router.delete('/:id', gamesController.delete);
     }
 }
 
